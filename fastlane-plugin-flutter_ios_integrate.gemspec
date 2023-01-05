@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'ddflj3210@gmail.com'
 
   spec.summary       = 'Fastlane plugin to integrate flutter to existing iOS project'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-flutter_ios_integrate"
+  spec.homepage      = "https://github.com/akring/fastlane-plugin-flutter_ios_integrate"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
