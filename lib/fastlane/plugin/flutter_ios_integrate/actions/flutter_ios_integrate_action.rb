@@ -12,12 +12,20 @@ module Fastlane
 
         UI.message(" ===== Flutter 构建开始 ===== ")
 
-        # Flutter 编译命令
-        flutter_build_command = "cd " + param_flutter_path + ";flutter build ios-framework"
+        # 进入 submodule 目录
+        Action.sh("cd " + param_flutter_path)
 
-        # 更新 Flutter 相关的 submodule
+        # 初始化 submodule
         other_action.git_submodule_update(recursive: true, init: true) 
-        flutter_build_result = Actions.sh(flutter_build_command)
+
+        # 清空未提交的内容
+        Action.sh("git reset --hard")
+
+        # 从远端更新 submodule
+        Action.sh("git submodule update --remote")
+
+        # Pub Get
+        flutter_build_result = Action.sh("flutter pub get")
         UI.message "#{flutter_build_result}"
 
         # Debug 打包时替换 Flutter build 模式命令
