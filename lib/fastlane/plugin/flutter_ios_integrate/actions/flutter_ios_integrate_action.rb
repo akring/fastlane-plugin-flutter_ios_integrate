@@ -24,6 +24,9 @@ module Fastlane
         # 从远端更新 submodule
         Action.sh("git submodule update --remote")
 
+        ls = Action.sh("ls")
+        UI.message "#{ls}"
+
         # Pub Get
         flutter_build_result = Action.sh("flutter pub get")
         UI.message "#{flutter_build_result}"
