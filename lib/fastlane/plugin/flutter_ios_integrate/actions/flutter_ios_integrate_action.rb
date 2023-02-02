@@ -15,11 +15,11 @@ module Fastlane
         # 进入 submodule 目录
         Action.sh("cd " + param_flutter_path)
 
-        # 初始化 submodule
-        other_action.git_submodule_update(recursive: true, init: true) 
-
         # 清空未提交的内容
         Action.sh("git reset --hard")
+
+        # 初始化 submodule
+        other_action.git_submodule_update(recursive: true, init: true) 
 
         # 从远端更新 submodule
         Action.sh("git submodule update --remote")
