@@ -12,8 +12,8 @@ module Fastlane
 
         UI.message(" ===== Flutter 构建开始 ===== ")
 
-        # 清空未提交的内容
-        Action.sh("git reset --hard")
+        # 清空未提交的内容 / 清空子模块为提交的内容
+        Action.sh("git reset --hard;git submodule foreach --recursive git reset --hard")
 
         # 初始化 submodule
         other_action.git_submodule_update(recursive: true, init: true) 
